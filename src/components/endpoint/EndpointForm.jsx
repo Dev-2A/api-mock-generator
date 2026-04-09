@@ -70,7 +70,7 @@ export default function EndpointForm() {
               setMethod(e.target.value);
               setError("");
             }}
-            className="w-[120px] shrink-0 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-30 shrink-0 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             {HTTP_METHODS.map((m) => (
               <option key={m.value} value={m.value}>
@@ -97,7 +97,7 @@ export default function EndpointForm() {
           <select
             value={statusCode}
             onChange={(e) => setStatusCode(e.target.value)}
-            className="w-[200px] shrink-0 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-50 shrink-0 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             {STATUS_CODES.map((s) => (
               <option key={s.value} value={s.value}>
