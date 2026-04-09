@@ -5,6 +5,7 @@ import MethodBadge from "../common/MethodBadge";
 import Button from "../common/Button";
 import JsonEditor from "./JsonEditor";
 import DelayInput from "./DelayInput";
+import DummyDataPanel from "./DummyDataPanel";
 
 export default function EndpointCard({ endpoint, index }) {
   const { removeEndpoint, duplicateEndpoint, updateEndpoint } = useEndpoints();
@@ -99,7 +100,7 @@ export default function EndpointCard({ endpoint, index }) {
                   updateEndpoint(endpoint.id, { method: e.target.value })
                 }
                 onClick={(e) => e.stopPropagation()}
-                className="w-[110px] bg-gray-800 border border-gray-700 rounded-lg px-2.5 py-1.5 text-xs text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-27.5 bg-gray-800 border border-gray-700 rounded-lg px-2.5 py-1.5 text-xs text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 {HTTP_METHODS.map((m) => (
                   <option key={m.value} value={m.value}>
@@ -116,7 +117,7 @@ export default function EndpointCard({ endpoint, index }) {
                   updateEndpoint(endpoint.id, { path: e.target.value })
                 }
                 onClick={(e) => e.stopPropagation()}
-                className="flex-1 min-w-[180px] bg-gray-800 border border-gray-700 rounded-lg px-2.5 py-1.5 text-xs text-gray-200 font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="flex-1 min-w-45 bg-gray-800 border border-gray-700 rounded-lg px-2.5 py-1.5 text-xs text-gray-200 font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
 
               {/* 상태코드 */}
@@ -128,7 +129,7 @@ export default function EndpointCard({ endpoint, index }) {
                   })
                 }
                 onClick={(e) => e.stopPropagation()}
-                className="w-[180px] bg-gray-800 border border-gray-700 rounded-lg px-2.5 py-1.5 text-xs text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-45 bg-gray-800 border border-gray-700 rounded-lg px-2.5 py-1.5 text-xs text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 {STATUS_CODES.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -153,6 +154,13 @@ export default function EndpointCard({ endpoint, index }) {
 
           {/* 구분선 */}
           <hr className="border-gray-800" />
+
+          {/* 더미 데이터 생성 */}
+          <DummyDataPanel
+            onApply={(generatedJson) =>
+              updateEndpoint(endpoint.id, { responseBody: generatedJson })
+            }
+          />
 
           {/* 응답 JSON 에디터 */}
           <JsonEditor
