@@ -37,14 +37,14 @@ export default function CodeGenSection() {
   return (
     <section className="space-y-4">
       {/* 헤더 */}
-      <div className="flex items-center justify-between flex-wrap gap-3">
-        <h2 className="text-base font-semibold text-gray-100 flex items-center gap-2">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <h2 className="text-sm sm:text-base font-semibold text-gray-100 flex items-center gap-2">
           <span>💻</span>
           서버 코드 생성
         </h2>
 
-        <div className="flex items-center gap-3">
-          {/* 포트 설정 */}
+        <div className="flex items-center gap-3 w-full sm:w-auto">
+          {/* 포트 */}
           <div className="flex items-center gap-1.5">
             <label className="text-[10px] text-gray-500">PORT:</label>
             <input
@@ -58,7 +58,7 @@ export default function CodeGenSection() {
           </div>
 
           {/* 프레임워크 탭 */}
-          <div className="flex bg-gray-800 rounded-lg p-0.5">
+          <div className="flex bg-gray-800 rounded-lg p-0.5 ml-auto sm:ml-0">
             <button
               onClick={() => setActiveFramework("express")}
               className={`px-3 py-1.5 text-xs rounded-md transition-colors cursor-pointer ${

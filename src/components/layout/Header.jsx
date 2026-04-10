@@ -3,10 +3,9 @@ export default function Header() {
     <header className="border-b border-gray-800 bg-gray-950/80 backdrop-blur-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
-          {/* 로고 + 타이틀 */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2">
             <span className="text-xl">🔌</span>
-            <h1 className="text-lg font-bold text-gray-100 tracking-tight">
+            <h1 className="text-base sm:text-lg font-bold text-gray-100 tracking-tight">
               API Mock Generator
             </h1>
             <span className="hidden sm:inline-block text-[10px] font-medium bg-indigo-600/30 text-indigo-300 px-1.5 py-0.5 rounded-full">
@@ -14,9 +13,8 @@ export default function Header() {
             </span>
           </div>
 
-          {/* 우측 링크 */}
           <div className="flex items-center gap-3">
-            <span className="text-xs text-gray-500 hidden sm:inline">
+            <span className="text-[11px] text-gray-500 hidden md:inline">
               Express · FastAPI 코드 자동 생성
             </span>
             <a

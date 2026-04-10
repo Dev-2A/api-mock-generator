@@ -55,22 +55,22 @@ export default function EndpointForm() {
   };
 
   return (
-    <section className="bg-gray-900 border border-gray-800 rounded-xl p-5">
-      <h2 className="text-base font-semibold text-gray-100 mb-4 flex items-center gap-2">
+    <section className="bg-gray-900 border border-gray-800 rounded-xl p-4 sm:p-5">
+      <h2 className="text-sm sm:text-base font-semibold text-gray-100 mb-4 flex items-center gap-2">
         <span>📝</span>
         엔드포인트 추가
       </h2>
 
       <div className="space-y-3">
         {/* 1행: 메서드 + 경로 */}
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <select
             value={method}
             onChange={(e) => {
               setMethod(e.target.value);
               setError("");
             }}
-            className="w-30 shrink-0 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full sm:w-30 shrink-0 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             {HTTP_METHODS.map((m) => (
               <option key={m.value} value={m.value}>
@@ -93,11 +93,11 @@ export default function EndpointForm() {
         </div>
 
         {/* 2행: 상태코드 + 설명 */}
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <select
             value={statusCode}
             onChange={(e) => setStatusCode(e.target.value)}
-            className="w-50 shrink-0 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full sm:w-50 shrink-0 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             {STATUS_CODES.map((s) => (
               <option key={s.value} value={s.value}>
@@ -116,12 +116,12 @@ export default function EndpointForm() {
           />
         </div>
 
-        {/* 에러 */}
         {error && <p className="text-xs text-red-400 pl-1">{error}</p>}
 
-        {/* 버튼 */}
         <div className="flex justify-end pt-1">
-          <Button onClick={handleSubmit}>+ 엔드포인트 추가</Button>
+          <Button onClick={handleSubmit} className="w-full sm:w-auto">
+            + 엔드포인트 추가
+          </Button>
         </div>
       </div>
     </section>

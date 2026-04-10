@@ -14,7 +14,7 @@ export default function Footer() {
               Dev-2A
             </a>
           </p>
-          <p className="text-gray-600">
+          <p className="text-gray-600 text-center text-[11px]">
             프론트엔드 개발 시 백엔드 대기 없이 목 서버를 즉시 만들어 쓰세요
           </p>
         </div>
