@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import { useEndpoints } from "../../context/EndpointContext";
 import { generateExpressCode } from "../../generators/expressGenerator";
+import { generateFastAPICode } from "../../generators/fastapiGenerator";
 import CodePreview from "./CodePreview";
-import Button from "../common/Button";
 
 export default function CodeGenSection() {
   const { endpoints } = useEndpoints();
@@ -11,6 +11,11 @@ export default function CodeGenSection() {
 
   const expressFiles = useMemo(
     () => generateExpressCode(endpoints, { port }),
+    [endpoints, port],
+  );
+
+  const fastapiFiles = useMemo(
+    () => generateFastAPICode(endpoints, { port: port === 3000 ? 8000 : port }),
     [endpoints, port],
   );
 
@@ -24,6 +29,10 @@ export default function CodeGenSection() {
       </section>
     );
   }
+
+  const currentFiles =
+    activeFramework === "express" ? expressFiles : fastapiFiles;
+  const currentLabel = activeFramework === "express" ? "Express.js" : "FastAPI";
 
   return (
     <section className="space-y-4">
@@ -75,17 +84,7 @@ export default function CodeGenSection() {
       </div>
 
       {/* 코드 프리뷰 */}
-      {activeFramework === "express" && (
-        <CodePreview files={expressFiles} framework="Express.js" />
-      )}
-
-      {activeFramework === "fastapi" && (
-        <div className="bg-gray-900/50 border border-dashed border-gray-800 rounded-xl p-6 text-center">
-          <p className="text-gray-500 text-sm">
-            🐍 FastAPI 코드 생성은 다음 단계에서 구현됩니다.
-          </p>
-        </div>
-      )}
+      <CodePreview files={currentFiles} framework={currentLabel} />
     </section>
   );
 }

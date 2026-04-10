@@ -30,8 +30,8 @@ function responseToJsLiteral(responseBody, indent = "    ") {
  * 단일 엔드포인트 → Express 라우트 코드
  */
 function generateRoute(ep) {
-  const method = ep.method.toLowerCase();
-  const path = normalizeExpressPath(ep.path);
+  const method = (ep.method || "GET").toLowerCase();
+  const path = normalizeExpressPath(ep.path || "/");
   const lines = [];
 
   // 주석
