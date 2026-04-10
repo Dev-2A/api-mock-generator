@@ -84,7 +84,15 @@ export default function CodeGenSection() {
       </div>
 
       {/* 코드 프리뷰 */}
-      <CodePreview files={currentFiles} framework={currentLabel} />
+      <CodePreview
+        files={currentFiles}
+        framework={currentLabel}
+        zipName={
+          activeFramework === "express"
+            ? "mock-server-express"
+            : "mock-server-fastapi"
+        }
+      />
     </section>
   );
 }
